@@ -22,7 +22,7 @@ git clone https://github.com/Chanyong-Park/how-to-create-apache-nifi.git
 # docker compose up -d
 ```
 
-## veryfy running container
+## verify running container
 ```
 # docker ps
 CONTAINER ID   IMAGE                COMMAND                 CREATED         STATUS         PORTS                                         NAMES
