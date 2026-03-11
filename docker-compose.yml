@@ -14,3 +14,4 @@ services:
       - ./content_repository:/opt/nifi/nifi-current/content_repository
       - ./provenance_repository:/opt/nifi/nifi-current/provenance_repository
       - ./conf:/opt/nifi/nifi-current/conf
+      - ./my-scripts:/opt/nifi/nifi-current/my-scripts
