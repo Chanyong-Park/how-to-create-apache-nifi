@@ -1,7 +1,8 @@
 version: '3'
 services:
   nifi:
-    image: apache/nifi:latest
+    #image: apache/nifi:latest
+    build: .  # 현재 디렉토리의 Dockerfile을 사용하여 빌드    
     container_name: nifi-server
     ports:
       - "8443:8443"  # NiFi 웹 UI 포트 (HTTPS)
