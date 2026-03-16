@@ -7,7 +7,7 @@ git clone https://github.com/Chanyong-Park/how-to-create-apache-nifi.git
 
 ## image build
 ```
-# docker build -t nifi-custom:latest .
+# docker build --progress=plain -t nifi-custom:latest .
 ```
 
 ## create tar file for copying to other system
