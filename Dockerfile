@@ -2,13 +2,16 @@ FROM apache/nifi:latest
 
 USER root
 
+ENV PIP_BREAK_SYSTEM_PACKAGES=1
+
 # 1. 필수 패키지 설치
 RUN apt-get update && apt-get install -y \
     python3-pip \
     wget \
     gnupg \
     unzip \
-    curl
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
 # 2. Google Chrome 정식 버전 설치
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -29,7 +32,8 @@ RUN CHROME_MAJOR_VERSION=$(google-chrome --version | cut -d ' ' -f 3 | cut -d '.
     rm /tmp/chromedriver.zip
 
 # 4. 파이썬 필수 라이브러리 설치
-RUN pip3 install requests beautifulsoup4 selenium
+RUN pip3 install --upgrade pip && \
+    pip3 install --no-cache-dir requests beautifulsoup4 selenium
 
 # 5. 권한 설정 및 사용자 복구
 RUN mkdir -p /opt/nifi/nifi-current/my-scripts && chown nifi:nifi /opt/nifi/nifi-current/my-scripts
